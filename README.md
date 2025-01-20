@@ -96,7 +96,7 @@ marketing-analysis/
 4. **View Plots**:
    ```bash
     python src/data_analysis/plotter.py
-    # produces plots in reports folder
+    # produces plots in the reports folder
    ```
 
 5. **View Streamlit Dashboard**:
@@ -110,10 +110,10 @@ marketing-analysis/
 ### Data Collection
 
 **Goal**: Gather posts/comments from /r/msp referencing “SentinelOne” or competitor keywords.
-**Implementation**:
 
+**Implementation**:
 - Uses PRAW with OAuth credentials (Reddit client ID & secret).
-- Searches subreddit with queries like "SentinelOne OR S1" or for other competitor names.
+- Searches subreddits with queries like "SentinelOne OR S1" or for other competitor names.
 - Fetches top-level posts, plus a subset of comments for each post.
 - Saves results in JSON (e.g., msp_data.json).
 
@@ -121,8 +121,8 @@ marketing-analysis/
 
 **Goal**: Summarize each post/comment, classify sentiment toward S1, identify benefits/complaints, competitor mentions,
 etc.
-**Implementation**:
 
+**Implementation**:
 - We read msp_data.json.
 - For each post & comment, we call a function like process_content_with_genai(text) which:
     - Builds a prompt from a template (see prompts.py).
@@ -134,8 +134,8 @@ etc.
 ### Post-Processing (Analysis)
 
 **Goal**: Create final aggregates for the marketing team and a list of actionable items.
-**Implementation**:
 
+**Implementation**:
 - Reads processed_msp_data.json.
 - Tally:
     - Sentiment distribution (positive, negative, neutral, etc.) across all posts/comments,
@@ -148,8 +148,8 @@ etc.
 ### Visualization
 
 **Goal**: Provide a simple Streamlit UI to display the analysis.
-**Implementation**:
 
+**Implementation**:
 - Run streamlit run src/data_analysis/dashboard.py.
 - Shows KPIs (total posts, total comments, sentiment distribution) in a bar chart, competitor mentions bar chart, and an
   interactive table of actionable items.
@@ -244,7 +244,7 @@ From the analyzed data:
 ## Conclusion
 
 Within >3 hours, we built a proof-of-concept pipeline that scrapes Reddit, uses an LLM to classify and summarize
-mentions of SentinelOne, identifies competitor mentions, organizes final insights, and shows actionable items for the
+mentions of SentinelOne, identify competitor mentions, organizes final insights, and shows actionable items for the
 marketing team.
 The solution is easily extensible and showcases how you can combine NLP/LLM summarization with real-world data (Reddit)
 to produce a valuable marketing analysis.
